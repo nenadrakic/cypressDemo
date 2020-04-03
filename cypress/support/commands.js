@@ -25,7 +25,7 @@
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
 Cypress.Commands.add("SignIn", () => {
-    cy.visit('https://react-redux.realworld.io/#/login?_k=t8cok8')
+    cy.visit('/#/login?_k=t8cok8')
     cy.title().should('eq', "Conduit")
     cy.location('protocol').should('eq', 'https:')
     cy.get('form').within(($form) => {
