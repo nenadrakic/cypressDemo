@@ -19,7 +19,7 @@ describe('Create and mark-unmark as favorite', ()=>{
         cy.url().should('include', 'article')
     })
 
-    it('Mark-unmark as faforite', function(){
+    it.skip('Mark-unmark as faforite', function(){
         cy.get('.nav-link').contains('nenadrakic').click()
         cy.contains('My Articles').should('be.visible')
         cy.get('.ion-heart').click()
