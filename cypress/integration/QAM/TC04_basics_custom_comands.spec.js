@@ -1,5 +1,7 @@
 describe('Create and mark-unmark as favorite', () => {
 
+    Cypress.config('pageLoadTimeout', 100000) //this is for this class only
+
     before(() => {
         cy.SignIn()
     })

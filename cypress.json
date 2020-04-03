@@ -1,3 +1,4 @@
 {
-    "watchForFileChanges": false
+    "watchForFileChanges": false,
+    "baseUrl": "https://react-redux.realworld.io" 
 }
