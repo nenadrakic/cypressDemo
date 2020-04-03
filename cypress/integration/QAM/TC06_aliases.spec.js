@@ -7,7 +7,8 @@ describe('Create and mark-unmark as favorite', () => {
     })
 
     it('Create a post', () => {
-        cy.get('ul.navbar-nav').children().contains('New Post').click()
+        cy.get('ul.navbar-nav').children().as('menu')
+        cy.get("@menu").contains('New Post').click()
         cy.hash().should('include', '#/editor')
         cy.get('form').within(($form) => {
             cy.get('input').first().type('Test') //first element of the form!!!
@@ -28,10 +29,12 @@ describe('Create and mark-unmark as favorite', () => {
         cy.url().should('include', 'favorites')
         
         cy.get('.btn-primary').first().then(($btn)=>{
-            const favCount =$btn.text()
-            expect(parseInt(favCount)).to.eq(1)
-        }).click()
-
+            return $btn.text()
+        }).as('favoritesCount')
+        cy.get('@favoritesCount').then(($cnt)=>{            
+            expect(parseInt($cnt)).to.eq(1)
+        })
+        cy.get('.btn-primary',{timeout:10000}).first().click();
         cy.reload()
         cy.contains('No articles are here... yet.').should('be.visible')
         cy.go('back')
